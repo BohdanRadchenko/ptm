@@ -1,5 +1,4 @@
 import React from "react";
-
 // ICON IMPORT
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import AppsOutlinedIcon from '@material-ui/icons/AppsOutlined';
@@ -8,7 +7,12 @@ import AddCircleOutlineOutlinedIcon
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import NotificationsNoneOutlinedIcon
   from '@material-ui/icons/NotificationsNoneOutlined';
-
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import GroupOutlinedIcon from '@material-ui/icons/GroupOutlined';
+import AssignmentIndOutlinedIcon
+  from '@material-ui/icons/AssignmentIndOutlined';
+import DeveloperBoardOutlinedIcon
+  from '@material-ui/icons/DeveloperBoardOutlined';
 // STYLE IMPORT
 import css from './Icon.module.scss'
 
@@ -74,7 +78,65 @@ const Icon = () => {
     )
   }
 
-  return {HomeIcon, AppIcon, AddIcon, InfoIcon, BellIcon}
+  const TeamIcon = () => {
+    return (
+        <div className={css.container}>
+          <div className={css.icon}>
+            <div className={css.icon__content}>
+              <GroupOutlinedIcon className={css.pos}/>
+            </div>
+          </div>
+        </div>
+    )
+  }
+
+  const DashIcon = () => {
+    return (
+        <div className={css.container}>
+          <div className={css.icon}>
+            <div className={css.icon__content}>
+              <DashboardIcon className={css.pos}/>
+            </div>
+          </div>
+        </div>
+    )
+  }
+
+  const StudentIcon = () => {
+    return (
+        <div className={css.container}>
+          <div className={css.icon}>
+            <div className={css.icon__content}>
+              <AssignmentIndOutlinedIcon className={css.pos}/>
+            </div>
+          </div>
+        </div>
+    )
+  }
+
+  const BoardIcon = () => {
+    return (
+        <div className={css.container}>
+          <div className={css.icon}>
+            <div className={css.icon__content}>
+              <DeveloperBoardOutlinedIcon className={css.pos}/>
+            </div>
+          </div>
+        </div>
+    )
+  }
+
+  return {
+    HomeIcon,
+    AppIcon,
+    AddIcon,
+    InfoIcon,
+    BellIcon,
+    DashIcon,
+    StudentIcon,
+    TeamIcon,
+    BoardIcon
+  }
 
 }
 

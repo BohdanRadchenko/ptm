@@ -4,7 +4,8 @@ import { ActionTypes } from '../actionTypes';
 const boardsReducer = (state = [], { type, payload }) => {
   switch (type) {
     case ActionTypes.BOARDS_SUCCESS:
-    case ActionTypes.DELETE_BOARD_SUCCESS:
+    case ActionTypes.BOARD_CREATE_SUCCESS:
+    case ActionTypes.BOARD_DELETE_SUCCESS:
       return payload
 
     case ActionTypes.LOGOUT_SUCCESS:
@@ -15,17 +16,39 @@ const boardsReducer = (state = [], { type, payload }) => {
   }
 };
 
+const loadingReducer = (state = false, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.BOARDS_REQUEST:
+    case ActionTypes.BOARD_CREATE_REQUEST:
+    case ActionTypes.BOARD_DELETE_REQUEST:
+      return true;
+
+    case ActionTypes.BOARDS_SUCCESS:
+    case ActionTypes.BOARD_CREATE_SUCCESS:
+    case ActionTypes.BOARD_DELETE_SUCCESS:
+    case ActionTypes.BOARDS_ERROR:
+    case ActionTypes.BOARD_CREATE_ERROR:
+    case ActionTypes.BOARD_DELETE_ERROR:
+      return false;
+
+    default:
+      return state;
+  }
+};
+
 const error = (state = null, { type, payload }) => {
   switch (type) {
-    case ActionTypes.SIGN_UP_ERROR:
-    case ActionTypes.SIGN_IN_ERROR:
-    case ActionTypes.REFRESH_USER_ERROR:
+    case ActionTypes.BOARDS_ERROR:
+    case ActionTypes.BOARD_CREATE_ERROR:
+    case ActionTypes.BOARD_DELETE_ERROR:
       return payload.error;
 
-    case ActionTypes.SIGN_IN_SUCCESS:
-    case ActionTypes.SIGN_UP_SUCCESS:
-    case ActionTypes.REFRESH_USER_SUCCESS:
-    case ActionTypes.CLEAR_ERROR_MESSAGE:
+    case ActionTypes.BOARDS_REQUEST:
+    case ActionTypes.BOARDS_SUCCESS:
+    case ActionTypes.BOARD_CREATE_REQUEST:
+    case ActionTypes.BOARD_CREATE_SUCCESS:
+    case ActionTypes.BOARD_DELETE_REQUEST:
+    case ActionTypes.BOARD_DELETE_SUCCESS:
       return null;
 
     default:
@@ -33,8 +56,8 @@ const error = (state = null, { type, payload }) => {
   }
 };
 
-
 export default combineReducers({
   boards : boardsReducer,
+  loading : loadingReducer,
   error,
 });

@@ -26,7 +26,6 @@ const Auth = ({isLoading}) => {
           <button
               onClick={e => handleButtonClick(e)}
               className={css.container__bg__button}>
-            {/*{typeText}*/}
             {isLoading? <Loaders/> : typeText}
           </button>
         </div>

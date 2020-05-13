@@ -7,7 +7,7 @@ export const signUpRequest = () => ({
 
 export const signUpSuccess = response => ({
   type: ActionTypes.SIGN_UP_SUCCESS,
-  payload: { response },
+  payload: {response} ,
 });
 
 export const signUpError = error => ({
@@ -21,9 +21,9 @@ export const signInRequest = () => ({
   type: ActionTypes.SIGN_IN_REQUEST,
 });
 
-export const signInSuccesss = response => ({
+export const signInSuccess = response => ({
   type: ActionTypes.SIGN_IN_SUCCESS,
-  payload: { response },
+  payload: {response} ,
 });
 
 export const signInError = error => ({

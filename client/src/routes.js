@@ -13,11 +13,11 @@ export const useRoutes = (isAuthentication) => {
         <Switch>
           {/*AUTH ROUTES*/}
           <Route path="/boards/:id">
-            <AsyncBoardsLists/>
+            <AsyncBoards/>
           </Route>
 
           <Route path="/boards" exact>
-            <AsyncBoards/>
+            <AsyncBoardsLists/>
           </Route>
 
           <Route path="/home">

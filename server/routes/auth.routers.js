@@ -27,7 +27,7 @@ router.post('/register',
         if (candidate) {
           console.log('400 - User already exist /auth.routers')
           return res.status(400)
-              .json({message: 'User already exist'},)
+              .json({message: 'User already exist'})
         }
 
         if (password !== passwordAgain) {

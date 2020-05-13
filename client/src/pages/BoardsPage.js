@@ -5,7 +5,7 @@ const BoardsPage = () => {
   return (
       <div>
         <Header/>
-        Boards Page
+        Boards Page One List
       </div>
   )
 }

@@ -5,6 +5,11 @@ const cors = require('cors');
 const config = require('config')
 const bodyParser = require("body-parser")
 
+const app = express()
+const server = require('http').createServer(app)
+const io = require('socket.io').listen(server)
+
+
 const PORT = process.env.PORT || config.get("port") || 5000
 const MONGODB_URI = process.env.MONGODB_URI || config.get('mongoURL')
 
@@ -12,8 +17,6 @@ corsOptions = {
   origin: "https://visit-book.herokuapp.com/",
   optionsSuccessStatus: 200
 };
-
-const app = express()
 
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: false}))
@@ -27,7 +30,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/auth', require('./routes/auth.routers'))
-// app.use('/api/v1/boards', require('./routes/board.routers'))
+app.use('/api/v1/boards', require('./routes/board.routers'))
 // app.use('/api/v1/lists', require('./routes/lists.routers'))
 // app.use('/api/v1/cards', require('./routes/card.routers'))
 
@@ -44,7 +47,7 @@ const start = async () => {
       useCreateIndex: true
     })
     console.log(`MongoDB is Connected... `)
-    app.listen(PORT, () => console.log(`App hes been started on port ${PORT} ...`))
+    server.listen(PORT, () => console.log(`App hes been started on port ${PORT} ...`))
   } catch (e) {
     console.log('Server Error', e.message)
     process.exit(1)

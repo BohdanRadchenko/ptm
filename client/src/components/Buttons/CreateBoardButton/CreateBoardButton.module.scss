@@ -1,0 +1,14 @@
+@import "../../../variables/variables.color";
+
+.container {
+  //width: 100%;
+  width: 200px;
+  height: 60px;
+  background-color: rgba(9,30,66,.04);
+  color: $color-main-blue;
+  border-radius: 5px;
+  display: flex;
+  vertical-align: center;
+  align-items: center;
+  cursor: pointer;
+}

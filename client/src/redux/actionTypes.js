@@ -2,7 +2,10 @@ export const ActionTypes = {
   //AUTH HANDLER
   HANDLE_AUTH_IN: 'HANDLE_AUTH_IN',
   HANDLE_AUTH_OUT: 'HANDLE_AUTH_OUT',
+  // -----------------------------------------------------------------
 
+
+  // ---- CONTROLLER ACTION ------------------------------------------
   //BURGER HANDLER
   HANDLE_BURGER_TOGGLE: 'HANDLE_BURGER_TOGGLE',
 
@@ -14,10 +17,16 @@ export const ActionTypes = {
   //BOARDS
   CREATE_MODAL_BOARDS_OPEN: 'CREATE_MODAL_BOARDS_OPEN',
   CREATE_MODAL_BOARDS_CLOSE: 'CREATE_MODAL_BOARDS_CLOSE',
+  // -----------------------------------------------------------------
 
 
+  // ---- DRAG AND DROP ACTION----------------------------------------
+  DRAG_HAPPENED: 'DRAG_HAPPENED',
+  // -----------------------------------------------------------------
+
+
+  // ---- LISTS ACTION -----------------------------------------------
   //LISTS
-  ALL_LISTS_HANDLER: 'ALL_LISTS_HANDLER',
   LISTS_REQUEST: 'LISTS_REQUEST',
   LISTS_SUCCESS: 'LISTS_SUCCESS',
   LISTS_ERROR: 'LISTS_ERROR',
@@ -31,33 +40,46 @@ export const ActionTypes = {
   CREATE_CARDS_REQUEST: 'CREATE_CARDS_REQUEST',
   CREATE_CARDS_SUCCESS: 'CREATE_CARDS_SUCCESS',
   CREATE_CARDS_ERROR: 'CREATE_CARDS_ERROR',
+  // -----------------------------------------------------------------
 
 
-  //DRAG AND DROP
-  DRAG_HAPPENED: 'DRAG_HAPPENED',
-
-  //BOARDS TYPE
+  // ---- BOARDS ACTION-----------------------------------------------
+  //BOARDS GET ALL
   BOARDS_REQUEST: 'BOARDS_REQUEST',
   BOARDS_SUCCESS: 'BOARDS_SUCCESS',
   BOARDS_ERROR: 'BOARDS_ERROR',
-  //DELETE BOARD BY ID
-  DELETE_BOARD_REQUEST: 'DELETE_BOARD_REQUEST',
-  DELETE_BOARD_SUCCESS: 'DELETE_BOARD_SUCCESS',
-  DELETE_BOARD_ERROR: 'DELETE_BOARD_ERROR',
 
-  //SESSION TYPE
+  //BOARD GET ALL
+  BOARD_CREATE_REQUEST: 'BOARD_CREATE_REQUEST',
+  BOARD_CREATE_SUCCESS: 'BOARD_CREATE_SUCCESS',
+  BOARD_CREATE_ERROR: 'BOARD_CREATE_ERROR',
+
+  //DELETE BOARD BY ID
+  BOARD_DELETE_REQUEST: 'BOARD_DELETE_REQUEST',
+  BOARD_DELETE_SUCCESS: 'BOARD_DELETE_SUCCESS',
+  BOARD_DELETE_ERROR: 'BOARD_DELETE_ERROR',
+  // -----------------------------------------------------------------
+
+
+  // ---- SESSION ACTION----------------------------------------------
+  // SIGN UP
   SIGN_UP_REQUEST: 'SIGN_UP_REQUEST',
   SIGN_UP_SUCCESS: 'SIGN_UP_SUCCESS',
   SIGN_UP_ERROR: 'SIGN_UP_ERROR',
+
+  //SIGN IN
   SIGN_IN_REQUEST: 'SIGN_IN_REQUEST',
   SIGN_IN_SUCCESS: 'SIGN_IN_SUCCESS',
   SIGN_IN_ERROR: 'SIGN_IN_ERROR',
+
+  //REFRESH USER
   REFRESH_USER_REQUEST: 'REFRESH_USER_REQUEST',
   REFRESH_USER_SUCCESS: 'REFRESH_USER_SUCCESS',
   REFRESH_USER_ERROR: 'REFRESH_USER_ERROR',
+
+  //LOG OUT USER
   LOGOUT_REQUEST: 'LOGOUT_REQUEST',
   LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
   LOGOUT_ERROR: 'LOGOUT_ERROR',
-  CLEAR_ERROR_MESSAGE: 'CLEAR_ERROR_MESSAGE',
-
+  // -----------------------------------------------------------------
 };
