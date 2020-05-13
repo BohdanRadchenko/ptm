@@ -1,0 +1,5 @@
+{
+  "port" : 5000,
+  "mongoURL" : "mongodb+srv://admin:admin@cluster0-3h1pt.mongodb.net/app?retryWrites=true&w=majority",
+  "jwtSecret" : "time manager app secret jwt code"
+}

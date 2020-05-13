@@ -1,0 +1,124 @@
+@import "../../variables/variables.color";
+
+//CONTAINER
+.container {
+  width: 80%;
+  height: 460px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0 59px 0 rgba(0, 0, 0, .5);
+  background-color: #fff;
+
+  &__bg {
+    border-radius: 8px 0 0 8px;
+    position: relative;
+    width: 36%;
+    height: 100%;
+    background-color: $bg-secondary-blue;
+
+    &__button {
+      color: #fff;
+      font-weight: 600;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      z-index: 999;
+      transform: translate(50%, -50%);
+      border-radius: 50%;
+      border: 10px solid #fff;
+      background-color: $bg-secondary-blue;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &__button:hover {
+      transform: translate(50%, -50%) scale(1.1);
+    }
+  }
+
+  &__main {
+    width: 66%;
+  }
+}
+
+
+//SLIDER
+.slider {
+  position: relative;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+
+  //LEFT SIDE
+  &__left {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all .3s ease-in-out;
+  }
+
+  &__left[attrtype='true'] {
+    transform: unset;
+  }
+
+  &__left[attrtype='false'] {
+    transform: translateX(-100%);
+  }
+
+  //RIGHT SIDE
+  &__rigth {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all .4s ease-in-out;
+  }
+
+  &__rigth[attrtype='true'] {
+    transform: translateX(100%);
+  }
+
+  &__rigth[attrtype='false'] {
+    transform: unset;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .container {
+    width: 90%;
+    height: 90vh;
+
+    &__bg {
+      display: none;
+    }
+
+    &__main {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 980px) {
+  .container {
+
+    &__bg {
+      display: none;
+    }
+
+    &__main {
+      width: 100%;
+    }
+  }
+}

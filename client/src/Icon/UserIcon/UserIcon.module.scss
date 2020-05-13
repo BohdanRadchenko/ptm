@@ -1,0 +1,55 @@
+@import '../../variables/variables.color';
+
+.container {
+  width: 120%;
+  cursor: pointer;
+  position: relative;
+}
+
+.profile {
+  width: 100%;
+  border-radius: 50%;
+  background-color: #dfe1e6;
+
+  &__pad {
+  }
+
+  position: relative;
+  height: 0;
+  border: none;
+  padding-top: 100%;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  & p {
+    color: $color-main-blue;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+//MODAL
+.modal {
+  width: 100%;
+
+  &__user {
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(9,30,66,.13);
+  }
+
+  &__user p {
+    color: #5e6c84;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__user p:first-child {
+    font-weight: 600;
+  }
+}
