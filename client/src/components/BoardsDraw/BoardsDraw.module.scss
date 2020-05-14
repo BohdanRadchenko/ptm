@@ -1,0 +1,113 @@
+@import "../../variables/variables.color";
+
+.container {
+  display: block;
+  width: 100%;
+  height: 49%;
+
+  &__inner {
+    position: relative;
+    height: 0;
+    border: none;
+    padding-top: 49%;
+
+    &__content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: $bg-main-fill;
+  overflow: hidden;
+
+  .tileFade {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover .tileFade {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  &:hover .control__left,
+  &:hover .control__right {
+    transform: translateX(0);
+  }
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+
+  &__left,
+  &__right {
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    transition: all .3s ease-in-out;
+  }
+
+  &__left {
+    left: 0;
+    transform: translateX(-100%) scale(1.1);
+  }
+
+  &__right {
+    right: 0;
+    transform: translateX(100%) scale(1.1);
+  }
+
+  .button {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+  }
+}
+
+.date {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__line {
+    width: 80%;
+    height: 0;
+    border: 1px solid hsla(0,0%,100%,.4);
+    margin: 4px auto;
+  }
+
+  &__block {
+    display: flex;
+    margin: 0;
+
+    &__time {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+
+      &:not(:last-child)::after {
+        content: '.';
+        margin-right: 2px;
+      }
+    }
+  }
+}

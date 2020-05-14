@@ -11,7 +11,7 @@ import {
   deleteBoardSuccess
 } from './boardsActions';
 
-export const boardCreate = credentials => dispatch => {
+export const handleBoardCreate = credentials => dispatch => {
   dispatch(boardCreateRequest());
   return api.boards().create(credentials)
       .then(response => {
@@ -19,24 +19,22 @@ export const boardCreate = credentials => dispatch => {
       })
       .catch(error => dispatch(boardCreateError(error)));
 };
-//
-// export const getBoardsAll = credentials => dispatch => {
-//   dispatch(boardsRequest());
-//   return axios
-//       .get('/boards/all')
-//       .then(response => {
-//         return dispatch(boardsSuccess(response.data.boards));
-//       })
-//       .catch(error => dispatch(boardsError(error)));
-// };
-//
-//
-// export const deleteBoard = id => dispatch => {
-//   dispatch(deleteBoardRequest());
-//   return axios
-//       .delete(`/boards/${id}`)
-//       .then(response => {
-//         return dispatch(deleteBoardSuccess(response.data.boards));
-//       })
-//       .catch(error => dispatch(deleteBoardError(error)));
-// };
+
+export const handleBoards = () => dispatch => {
+  dispatch(boardsRequest());
+  return api.boards().all()
+      .then(response => {
+        return dispatch(boardsSuccess(response.data.boards));
+      })
+      .catch(error => dispatch(boardsError(error)));
+};
+
+
+export const handleDeleteBoard = id => dispatch => {
+  dispatch(deleteBoardRequest());
+  api.boards().remove(id)
+      .then(response => {
+        return dispatch(deleteBoardSuccess(response.data.boards));
+      })
+      .catch(error => dispatch(deleteBoardError(error)));
+};

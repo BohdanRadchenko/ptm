@@ -5,16 +5,23 @@ import css from './CreateBoardButton.module.scss'
 
 const CreateBoardButton = ({handleBoardModalOpen}) => {
   return (
-      <div
-      onClick={handleBoardModalOpen}
-          className={css.container}>
-        <p>CreateBoardButton</p>
-      </div>
+      <button className={css.container}
+              onClick={handleBoardModalOpen}>
+        <div className={css.container__inner}>
+          <div className={css.container__inner__content}>
+            <div className={css.content}>
+              <p>
+                Create new Board
+              </p>
+            </div>
+          </div>
+        </div>
+      </button>
   )
 }
 
 const mDTP = {
-  handleBoardModalOpen : createModalBoardsOpen
+  handleBoardModalOpen: createModalBoardsOpen
 }
 
 export default connect(null, mDTP)(CreateBoardButton)

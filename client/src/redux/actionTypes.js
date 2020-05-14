@@ -8,6 +8,8 @@ export const ActionTypes = {
   // ---- CONTROLLER ACTION ------------------------------------------
   //BURGER HANDLER
   HANDLE_BURGER_TOGGLE: 'HANDLE_BURGER_TOGGLE',
+  HANDLE_BURGER_OPEN: 'HANDLE_BURGER_OPEN',
+  HANDLE_BURGER_CLOSE: 'HANDLE_BURGER_CLOSE',
 
   //CREATE MODAL
   //CARDS

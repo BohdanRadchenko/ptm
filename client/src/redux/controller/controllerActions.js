@@ -1,8 +1,15 @@
 import { ActionTypes } from "../actionTypes";
 
-//BURGER TOGGLE
-export const handlerBurger = () => ({
+//BURGER
+export const handlerBurgerToggle = () => ({
   type: ActionTypes.HANDLE_BURGER_TOGGLE,
+});
+
+export const handlerBurgerOpen = () => ({
+  type: ActionTypes.HANDLE_BURGER_OPEN,
+});
+export const handlerBurgerClose = () => ({
+  type: ActionTypes.HANDLE_BURGER_CLOSE,
 });
 
 //CREATE MODAL CARDS OPEN

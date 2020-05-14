@@ -8,6 +8,8 @@ const API_PATH = {
   SIGN_IN: '/auth/login',
   LOG_OUT: '/auth/logout',
   BOARD_CREATE: '/boards/create',
+  BOARD_GET_ALL: '/boards',
+  BOARD_DELETE: '/boards/',
 }
 
 export const setAuthToken = token => {
@@ -34,5 +36,13 @@ export const boards = () => {
     return await axios.post(API_PATH.BOARD_CREATE, credentials)
   }
 
-  return {create}
+  const all = async () => {
+    return await axios.get(API_PATH.BOARD_GET_ALL)
+  }
+
+  const remove = async (id) => {
+    return await axios.delete(API_PATH.BOARD_DELETE + id)
+  }
+
+  return {create, all, remove}
 }

@@ -21,8 +21,8 @@ const CreateBoardForm = ({onClose, onCreate}) => {
   const handleFormSubmit = e => {
     e.preventDefault()
     onCreate(form)
-    // setForm(defaultForm) // comment for test back-end
-    // onClose()  // comment for test back-end
+    setForm(defaultForm) // comment for test back-end
+    onClose()  // comment for test back-end
   }
 
   return (

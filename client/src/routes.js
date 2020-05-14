@@ -11,7 +11,6 @@ export const useRoutes = (isAuthentication) => {
   if (isAuthentication) {
     return (
         <Switch>
-          {/*AUTH ROUTES*/}
           <Route path="/boards/:id">
             <AsyncList/>
           </Route>
@@ -30,7 +29,7 @@ export const useRoutes = (isAuthentication) => {
   }
   return (
       <Switch>
-        {/*AUTH*/}
+        {/*AUTH ROUTES*/}
         <Route path="/auth">
           <AsyncAuth/>
         </Route>

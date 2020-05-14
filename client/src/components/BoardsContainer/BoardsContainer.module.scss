@@ -1,5 +1,36 @@
 @import "../../variables/variables.color";
 
 .container {
-  width: 100%;
+  width: 80%;
+  padding-top: 20px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  &__menu {
+    width: 20%;
+  }
+
+  &__list {
+    width: 80%;
+  }
+}
+
+//MEDIA MOBILE
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .container {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    &__menu {
+      display: none;
+    }
+
+    &__list {
+      width: 100%;
+    }
+  }
 }

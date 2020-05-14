@@ -34,3 +34,10 @@
     margin-right: 0;
   }
 }
+
+//MEDIA MOBILE
+@media screen and (max-width: 767px){
+  .container {
+    display: none;
+  }
+}

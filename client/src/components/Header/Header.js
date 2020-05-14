@@ -47,7 +47,7 @@ const Header = () => {
         {/*MODAL PROFILE*/}
         {addIsOpen && (
             <HeaderModal onClose={handleModalClose}>
-              <HeaderModalAdd onClose={handleModalClose}/>
+              <HeaderModalAdd onClose={handleModalClose} board/>
             </HeaderModal>
         )}
       </>

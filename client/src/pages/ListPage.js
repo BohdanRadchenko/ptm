@@ -5,6 +5,7 @@ const ListPage = () => {
   return (
       <div>
         <Header/>
+        LIST
         List Page
       </div>
   )

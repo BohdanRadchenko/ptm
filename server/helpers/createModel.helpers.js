@@ -39,16 +39,8 @@ class CreateModel {
     }
   }
 
-  // static board(startDay = 0, startMonth = 0 ) {
-  static board(userId, list) {
-    // if (!startDay || !startMonth) {
-    //   console.log('ERROR: Empty props CreateModel.list')
-    //   console.log(' - line: 24 - createModel.helpers.js')
-    //   return null
-    // }
-
-    const access = new Array(mongoose.Types.ObjectId(userId))
-
+  static board(userId = '', list = []) {
+    const access = new Array(userId)
     return {
       dateStart: list.dateStart,
       dateEnd: list.dateEnd,

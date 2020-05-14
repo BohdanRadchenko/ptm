@@ -1,30 +1,52 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from 'react-redux'
 import {createModalBoards} from '../../redux/controller/controllerSelectors'
 import {createModalBoardsClose} from '../../redux/controller/controllerActions'
-import {boardCreate} from '../../redux/boards/boardsOperations'
-import CreateBoardButton
-  from "../Buttons/CreateBoardButton/CreateBoardButton";
+import {
+  handlerBoardsAll,
+  loading
+} from '../../redux/boards/boardsSelectors'
+import {
+  handleBoardCreate,
+  handleBoards,
+} from '../../redux/boards/boardsOperations'
 import CreateModal from "../Modal/CreateModal/CreateModal";
 import CreateBoardForm
   from "../Modal/CreateModal/CreateBoardForm/CreateBoardForm";
+import BoardsList from "../BoardsList/BoardsList";
+import BoardsMenu from "../BoardsMenu/BoardsMenu";
+import {LoadersScreen} from "../Loaders/LoadersScreen";
 import css from './BoardsContainer.module.scss'
 
-const BoardsContainer = ({isOpenModalBoards, handleCloseBoardModal, onCreate}) => {
+
+const BoardsContainer = ({handleBoards, boards, isOpenModalBoards, handleCloseBoardModal, onCreate, onDelete, loading}) => {
+
+  useEffect(() => {
+    handleBoards()
+  }, [handleBoards])
+
   const handleCLose = () => {
     handleCloseBoardModal()
   }
 
   return (
       <>
+        {/*LOADING*/}
+        {loading && <LoadersScreen/>}
+
         <div className={css.container}>
-          BoardsContainer
-          <CreateBoardButton/>
+          <div className={css.container__menu}>
+            <BoardsMenu />
+          </div>
+          <div className={css.container__list}>
+            <BoardsList boards={boards}/>
+          </div>
         </div>
 
         {isOpenModalBoards && (
             <CreateModal onClose={handleCLose}>
-              <CreateBoardForm onClose={handleCLose} onCreate={onCreate}/>
+              <CreateBoardForm onClose={handleCLose}
+                               onCreate={onCreate}/>
             </CreateModal>
         )}
       </>
@@ -33,13 +55,16 @@ const BoardsContainer = ({isOpenModalBoards, handleCloseBoardModal, onCreate}) =
 
 const mSTP = state => (
     {
-      isOpenModalBoards: createModalBoards(state)
+      isOpenModalBoards: createModalBoards(state),
+      boards: handlerBoardsAll(state),
+      loading: loading(state),
     }
 )
 
 const mDTP = {
   handleCloseBoardModal: createModalBoardsClose,
-  onCreate : boardCreate
+  onCreate: handleBoardCreate,
+  handleBoards: handleBoards,
 }
 
 export default connect(mSTP, mDTP)(BoardsContainer)

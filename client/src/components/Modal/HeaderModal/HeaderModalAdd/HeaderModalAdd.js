@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {createModalBoardsOpen} from '../../../../redux/controller/controllerActions'
 import css from './HeaderModalAdd.module.scss'
 
-const HeaderModalAdd = ({onClose, handleModalBoardOpen}) => {
+const HeaderModalAdd = ({onClose, handleModalBoardOpen, board, list}) => {
 
   const handleBoardOpen = e => {
     handleModalBoardOpen()
@@ -26,7 +26,7 @@ const HeaderModalAdd = ({onClose, handleModalBoardOpen}) => {
               Board...</h2>
             <p className={css.modal__block__nav__subtitle}>A board is
               made up of cards ordered on lists. Use it to
-              manage projects, track information, or organize
+              manage jobs, track information, or organize
               anything.</p>
           </button>
 

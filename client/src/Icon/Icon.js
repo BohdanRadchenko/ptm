@@ -13,6 +13,9 @@ import AssignmentIndOutlinedIcon
   from '@material-ui/icons/AssignmentIndOutlined';
 import DeveloperBoardOutlinedIcon
   from '@material-ui/icons/DeveloperBoardOutlined';
+import StarBorderOutlinedIcon
+  from '@material-ui/icons/StarBorderOutlined';
+import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
 // STYLE IMPORT
 import css from './Icon.module.scss'
 
@@ -126,6 +129,30 @@ const Icon = () => {
     )
   }
 
+  const StarIcon = () => {
+    return (
+        // <div className={css.container}>
+        //   <div className={css.icon}>
+        //     <div className={css.icon__content}>
+              <StarBorderOutlinedIcon className={css.pos}/>
+            // </div>
+          // </div>
+        // </div>
+    )
+  }
+
+  const DeleteIcon = () => {
+    return (
+        // <div className={css.container}>
+        //   <div className={css.icon}>
+        //     <div className={css.icon__content}>
+              <HighlightOffOutlinedIcon className={css.pos}/>
+            // </div>
+          // </div>
+        // </div>
+    )
+  }
+
   return {
     HomeIcon,
     AppIcon,
@@ -135,7 +162,9 @@ const Icon = () => {
     DashIcon,
     StudentIcon,
     TeamIcon,
-    BoardIcon
+    BoardIcon,
+    StarIcon,
+    DeleteIcon
   }
 
 }

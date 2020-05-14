@@ -5,7 +5,8 @@ const schema = new Schema({
   dateEnd: {type: Date, default: null},
   date: {type: Date, default: Date.now()},
   author: {type: Types.ObjectId, ref: "User"},
-  access: [{type: Types.ObjectId, ref: "User"}],
+  // access: [{type: Types.ObjectId, ref: "User"}],
+  access: {type: Array, default : []},
   list: { type: Types.ObjectId, ref: "list" },
 })
 

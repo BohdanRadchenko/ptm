@@ -5,7 +5,7 @@ const auth = require('../middleware/auth.middleware')
 const CreateModel = require('../helpers/createModel.helpers')
 const router = Router()
 
-// /api/v1/boards/create
+// /api/v1/boards/create  POST
 router.post('/create', auth, async (req, res) => {
   try {
     const userId = req.user.decoded.userId
@@ -41,14 +41,33 @@ router.post('/create', auth, async (req, res) => {
   }
 })
 
-// /api/v1/boards/
+// /api/v1/boards/  GET
 router.get('/', auth, async (req, res) => {
   try {
     const userId = req.user.decoded.userId
-    console.log(userId)
+    await Board.find().exec(async (err, boards) => {
+      if(err) return new Error(err)
+      const accessBoards = boards.filter(el => el.access.includes(userId))
+      return res.status(200).json({message: `GET boards Success`, boards : accessBoards})
+    })
   } catch (e) {
     res.status(500)
         .json({message: `ERROR: GET all Board. Something went wrong! ${e.message}`})
+  }
+})
+
+// /api/v1/boards/  DELETE
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const id = req.params.id
+    await Board.findByIdAndDelete(id).exec(async (err, board) => {
+      if(err) return new Error(err)
+      const boards = await Board.find()
+      return res.status(200).json({message: `GET boards Success`, boards})
+    })
+  } catch (e) {
+    res.status(500)
+        .json({message: `ERROR: DELETE Board. Something went wrong! ${e.message}`})
   }
 })
 
