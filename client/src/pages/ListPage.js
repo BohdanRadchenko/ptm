@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../components/Header/Header";
 
-const BoardsPage = () => {
+const ListPage = () => {
   return (
       <div>
         <Header/>
-        Boards Page One List
+        List Page
       </div>
   )
 }
 
-export default BoardsPage
+export default ListPage

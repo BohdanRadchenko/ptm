@@ -3,21 +3,21 @@ import {
   boardsError,
   boardsRequest,
   boardsSuccess,
-    boardsCreateRequest,
-    boardsCreateSuccess,
-    boardsCreateError,
+    boardCreateRequest,
+    boardCreateSuccess,
+    boardCreateError,
   deleteBoardError,
   deleteBoardRequest,
   deleteBoardSuccess
 } from './boardsActions';
 
-export const boardsCreate = credentials => dispatch => {
-  dispatch(boardsRequest());
+export const boardCreate = credentials => dispatch => {
+  dispatch(boardCreateRequest());
   return api.boards().create(credentials)
       .then(response => {
-        return dispatch(boardsSuccess(response.data.boards));
+        return dispatch(boardCreateSuccess(response.data.boards));
       })
-      .catch(error => dispatch(boardsError(error)));
+      .catch(error => dispatch(boardCreateError(error)));
 };
 //
 // export const getBoardsAll = credentials => dispatch => {

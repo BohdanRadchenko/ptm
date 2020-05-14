@@ -1,1 +1,1 @@
-export const getBoards = state => state.boards.boards
+export const handlerBoardsAll = state => state.boards.boards

@@ -2,83 +2,54 @@ const {Router} = require('express')
 const Board = require('../models/Board')
 const List = require('../models/List')
 const auth = require('../middleware/auth.middleware')
-const listsCreate = require('../helpers/listsCreate.helpers')
-const boardsCreate = require('../helpers/boardsCreate.helpers')
+const CreateModel = require('../helpers/createModel.helpers')
 const router = Router()
 
 // /api/v1/boards/create
-router.post('/create', auth,  async (req, res) => {
+router.post('/create', auth, async (req, res) => {
   try {
-    const user = req.user
-    // console.log(user)
-    console.log(req.body)
-    // const {title, type} = req.body
-    // const newLists = listsCreate(req.body, type)
-    // const newBoard = boardsCreate('author', title, newLists, type)
-    // const board = new Board({
-    //   lists: newBoard.lists,
-    //   title :newBoard.title,
-    //   dateStart :newBoard.dateStart,
-    //   dateEnd :newBoard.dateEnd,
-    //   type : newBoard.type
-    // })
-    // await board.save()
-    // const boards = await Board.find()
-    // res.status(201).json({message: `board - lists - create`, boards})
+    const userId = req.user.decoded.userId
+    const day = req.body.startValueDay
+    const month = req.body.startValueMonth
+    const createList = CreateModel.list(day, month)
+
+    await new List({
+      lists: createList.lists,
+      dateStart: createList.dateStart,
+      dateEnd: createList.dateEnd,
+      notification: createList.notification
+    }).save( async (err, list) => {
+      if(err) return new Error(err)
+      const createBoard = CreateModel.board(userId, list)
+      await new Board({
+        dateStart: createBoard.dateStart,
+        dateEnd: createBoard.dateEnd,
+        author: createBoard.author,
+        list: createBoard.list,
+        access : createBoard.access,
+      }).save( async (err, board) => {
+        if(err) return new Error(err)
+        await Board.find().exec((err, boards) => {
+          if(err) return new Error(err)
+        return res.status(201).json({message: `New board is created`, boards})
+        })
+      })
+    })
   } catch (e) {
     res.status(500)
-        .json({message: `error post create board ${e.message}`})
+        .json({message: `ERROR: Post create new Board. Something went wrong! ${e.message}`})
   }
 })
 
-// // /api/v1/boards/all
-// router.get('/all', async (req, res) => {
-//   try {
-//     const boards = await Board.find()
-//     res.status(200).json({message: 'ok', boards})
-//   } catch (e) {
-//     res.status(500)
-//         .json({message: `error post register ${e.message}`})
-//   }
-// })
-//
-// // /api/v1/boards/get/:id
-// router.get('/get/:id', async (req, res) => {
-//   try {
-//     const board = await Board.findById(req.params.id)
-//     res.status(200).json({message: 'ok', board})
-//   } catch (e) {
-//     res.status(500)
-//         .json({message: `error get boards by id ${e.message}`})
-//   }
-// })
-//
-// // /api/v1/boards/patch/:id
-// router.patch('/patch/:id', async (req, res) => {
-//   try {
-//     const boardId = req.params.id
-//     const lists = req.body.lists
-//     await Board.where({_id: boardId})
-//         .updateOne({lists: lists})
-//     const board = await Board.findById(req.params.id)
-//     res.status(200).json({message: 'Board upgrade', board})
-//   } catch (e) {
-//     res.status(500)
-//         .json({message: `error patch boards by id ${e.message}`})
-//   }
-// })
-//
-// // /api/v1/boards/:id
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     await Board.findById(req.params.id).deleteOne()
-//     const boards = await Board.find()
-//     res.status(200).json({message: 'delete board by id', boards})
-//   } catch (e) {
-//     res.status(500)
-//         .json({message: `error delete boards by id ${e.message}`})
-//   }
-// })
-
+// /api/v1/boards/
+router.get('/', auth, async (req, res) => {
+  try {
+    const userId = req.user.decoded.userId
+    console.log(userId)
+  } catch (e) {
+    res.status(500)
+        .json({message: `ERROR: GET all Board. Something went wrong! ${e.message}`})
+  }
+})
 
 module.exports = router;

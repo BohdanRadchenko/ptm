@@ -7,12 +7,12 @@ export const AsyncHome = lazy(() =>
 );
 
 //BOARDS
-export const AsyncBoards = lazy(() =>
-  import('./pages/BoardsPage'),
+export const AsyncBoard = lazy(() =>
+  import('./pages/BoardPage'),
 );
 
-export const AsyncBoardsLists = lazy(() =>
-  import('./pages/BoardsListPage'),
+export const AsyncList = lazy(() =>
+  import('./pages/ListPage'),
 );
 
 //AUTH

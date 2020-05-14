@@ -2,8 +2,8 @@ import React from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import {
   AsyncAuth,
-  AsyncBoards,
-  AsyncBoardsLists,
+  AsyncBoard,
+  AsyncList,
   AsyncHome
 } from "./async.routes";
 
@@ -13,11 +13,11 @@ export const useRoutes = (isAuthentication) => {
         <Switch>
           {/*AUTH ROUTES*/}
           <Route path="/boards/:id">
-            <AsyncBoards/>
+            <AsyncList/>
           </Route>
 
           <Route path="/boards" exact>
-            <AsyncBoardsLists/>
+            <AsyncBoard/>
           </Route>
 
           <Route path="/home">

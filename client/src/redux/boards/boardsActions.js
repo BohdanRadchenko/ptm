@@ -7,7 +7,7 @@ export const boardsRequest = () => ({
 
 export const boardsSuccess = response => ({
   type: ActionTypes.BOARDS_SUCCESS,
-  payload: {response},
+  payload: response,
 });
 
 export const boardsError = error => ({
@@ -16,18 +16,18 @@ export const boardsError = error => ({
 });
 
 //CREATE BOARDS
-export const boardsCreateRequest = () => ({
+export const boardCreateRequest = () => ({
   type: ActionTypes.BOARD_CREATE_REQUEST,
 });
 
-export const boardsCreateSuccess = response => ({
+export const boardCreateSuccess = response => ({
   type: ActionTypes.BOARD_CREATE_SUCCESS,
-  payload: {response},
+  payload: response,
 });
 
-export const boardsCreateError = error => ({
+export const boardCreateError = error => ({
   type: ActionTypes.BOARD_CREATE_ERROR,
-  payload: { error },
+  payload: error ,
 });
 
 
@@ -38,10 +38,10 @@ export const deleteBoardRequest = () => ({
 
 export const deleteBoardSuccess = response => ({
   type: ActionTypes.BOARD_DELETE_SUCCESS,
-  payload: {response},
+  payload: response,
 });
 
 export const deleteBoardError = error => ({
   type: ActionTypes.BOARD_DELETE_ERROR,
-  payload: { error },
+  payload: error ,
 });

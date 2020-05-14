@@ -3,14 +3,14 @@ import Header from "../components/Header/Header";
 import BoardsContainer
   from "../components/BoardsContainer/BoardsContainer";
 
-const BoardsListPage = () => {
+const BoardPage = () => {
   return (
       <div>
         <Header/>
-        Boards List Page  (ALL LISTS)
         <BoardsContainer/>
+        Boards Page One List
       </div>
   )
 }
 
-export default BoardsListPage
+export default BoardPage
