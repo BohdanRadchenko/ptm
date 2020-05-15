@@ -1,48 +1,50 @@
 @import "../../variables/variables.color";
 
-//MEDIA MOBILE
-@media screen and (max-width: 767px) {
+.header {
+  padding: 6px 20px;
+  background-color: $bg-main-fill;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.burger {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  outline: none;
+
+  &:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+  }
+
+  &__one,
+  &__two,
+  &__three {
+    position: absolute;
+    width: 80%;
+    border: 1px solid #fff;
+    transform: translateY(-50%);
+  }
+
+  &__one {
+    top: 30%;
+  }
+
+  &__two {
+    top: 50%;
+  }
+
+  &__three {
+    top: 70%;
+  }
+}
+
+@media screen and (min-width: 768px) {
   .header {
-    padding: 6px 20px;
-    background-color: $bg-main-fill;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    display: none;
   }
-
-  .burger {
-    position: relative;
-    width: 38px;
-    height: 38px;
-    background-color: transparent;
-    border: 1px solid transparent;
-    outline: none;
-
-    &:active {
-      transform: translateY(1px);
-      filter: saturate(150%);
-    }
-
-    &__one,
-    &__two,
-    &__three {
-      position: absolute;
-      width: 80%;
-      border: 1px solid #fff;
-      transform: translateY(-50%);
-    }
-
-    &__one {
-      top: 30%;
-    }
-
-    &__two {
-      top: 50%;
-    }
-
-    &__three {
-      top: 70%;
-    }
-  }
-
 }
