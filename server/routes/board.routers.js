@@ -41,9 +41,13 @@ router.post('/create', auth, async (req, res) => {
   }
 })
 
+let count = 0
+
 // /api/v1/boards/  GET
 router.get('/', auth, async (req, res) => {
   try {
+    count++
+    console.log('GET BOARD', count)
     const userId = req.user.decoded.userId
     await Board.find().exec(async (err, boards) => {
       if(err) return new Error(err)

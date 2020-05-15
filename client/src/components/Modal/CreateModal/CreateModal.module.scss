@@ -20,3 +20,13 @@
   padding: 4px 6px;
   border-radius: 5px;
 }
+
+//MEDIA MOBILE
+@media screen and (max-width: 767px) {
+
+  .modal {
+    width: 100%;
+    left: 0;
+    transform: unset;
+  }
+}

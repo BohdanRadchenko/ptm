@@ -3,8 +3,8 @@ import {useHistory} from "react-router-dom";
 import {connect} from 'react-redux'
 import {handleDeleteBoard} from '../../../redux/boards/boardsOperations'
 import {localDateParse} from "../../../helpers/parseDate.helpers";
-import css from './BoardsDrawMobile.module.scss'
 import Icon from "../../../Icon/Icon";
+import css from './BoardsDrawMobile.module.scss'
 
 
 const BoardsDrawMobile = ({dateEnd, dateStart, _id, onDelete}) => {

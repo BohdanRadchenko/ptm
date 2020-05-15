@@ -21,11 +21,13 @@ export const clearAuthToken = () => {
 };
 
 export const auth = () => {
-  const signUp = async credentials =>  await axios.post(API_PATH.SIGN_UP, credentials)
+  const signUp = async credentials => await axios.post(
+      API_PATH.SIGN_UP, credentials)
 
-  const signIn = async credentials =>  await axios.post(API_PATH.SIGN_IN, credentials)
+  const signIn = async credentials => await axios.post(
+      API_PATH.SIGN_IN, credentials)
 
-  const logOut = async () =>  await axios.get(API_PATH.LOG_OUT)
+  const logOut = async () => await axios.get(API_PATH.LOG_OUT)
 
   return {signUp, signIn, logOut}
 }
@@ -46,3 +48,4 @@ export const boards = () => {
 
   return {create, all, remove}
 }
+

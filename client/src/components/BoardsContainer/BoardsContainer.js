@@ -22,7 +22,12 @@ import css from './BoardsContainer.module.scss'
 const BoardsContainer = ({handleBoards, boards, isOpenModalBoards, handleCloseBoardModal, onCreate, onDelete, loading}) => {
 
   useEffect(() => {
-    handleBoards()
+    const poll = setInterval(() => {
+      handleBoards()
+    }, 2000)
+    return () => {
+      clearInterval(poll)
+    }
   }, [handleBoards])
 
   const handleCLose = () => {
@@ -36,7 +41,7 @@ const BoardsContainer = ({handleBoards, boards, isOpenModalBoards, handleCloseBo
 
         <div className={css.container}>
           <div className={css.container__menu}>
-            <BoardsMenu />
+            <BoardsMenu/>
           </div>
           <div className={css.container__list}>
             <BoardsList boards={boards}/>
