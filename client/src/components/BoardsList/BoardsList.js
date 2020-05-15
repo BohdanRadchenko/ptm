@@ -1,8 +1,13 @@
 import React from "react";
-import css from './BoardsList.module.scss'
 import CreateBoardButton
   from "../Buttons/CreateBoardButton/CreateBoardButton";
 import BoardsDraw from "../BoardsDraw/BoardsDraw";
+import BoardsDrawMobile
+  from "../BoardsDraw/BoardsDrawMobile/BoardsDrawMobile";
+import CreateBoardButtonMobile
+  from "../Buttons/CreateBoardButtonMobile/CreateBoardButtonMobile";
+import css from './BoardsList.module.scss'
+
 
 const BoardsList = ({boards}) => {
   if (!boards) {
@@ -18,10 +23,15 @@ const BoardsList = ({boards}) => {
               {boards.map(board => (
                   <li key={board._id} className={css.list__item}>
                     <BoardsDraw {...board}/>
+                    <BoardsDrawMobile {...board}/>
                   </li>
               ))}
-              <li key={'create_button'} className={css.list__item}>
+              <li key={'create_button'} className={`${css.list__item} ${css.createButton}`}>
                 <CreateBoardButton/>
+              </li>
+
+              <li key={'create_button_mobile'}>
+                <CreateBoardButtonMobile/>
               </li>
             </>
           </ul>

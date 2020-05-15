@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {burgerMenu} from '../../redux/controller/controllerSelectors'
 import {handlerBurgerClose} from '../../redux/controller/controllerActions'
 import css from './BurgerMenu.module.scss'
+import BurgerContent from "./BurgerContent";
 
 const BurgerMenu = ({isOpen, onClose, children}) => {
   const backdropRef = createRef();
@@ -15,10 +16,6 @@ const BurgerMenu = ({isOpen, onClose, children}) => {
     onClose();
   };
 
-  // if(!isOpen) {
-  //   return null
-  // }
-
   return (
       <div
           onClick={handleBackdropClick}
@@ -27,7 +24,7 @@ const BurgerMenu = ({isOpen, onClose, children}) => {
         <div className={isOpen
             ? css.modal__content
             : css.modalClose__content}>
-          Burger Menu
+          <BurgerContent/>
           {children}
         </div>
       </div>

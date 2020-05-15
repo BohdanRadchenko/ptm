@@ -1,0 +1,13 @@
+@import "../../../variables/variables.color";
+
+.container {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    display: block;
+    width: 100%;
+  }
+}
+
