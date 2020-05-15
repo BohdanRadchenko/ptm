@@ -9,7 +9,6 @@ const BoardsDrawMobile = ({dateEnd, dateStart, _id, onDelete}) => {
   const start = localDateParse(dateStart)
   const end = localDateParse(dateEnd)
 
-
   return (
       <div className={css.container}>
         BoardsDrawMobile

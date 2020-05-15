@@ -17,7 +17,7 @@ const BoardsList = ({boards}) => {
   return (
       <div className={css.container}>
         <div className={css.board}>
-          <h1 className={css.board__title} >Personal Boards</h1>
+          <h1 className={css.board__title}>Personal Boards</h1>
           <ul className={css.list}>
             <>
               {boards.map(board => (
@@ -26,13 +26,12 @@ const BoardsList = ({boards}) => {
                     <BoardsDrawMobile {...board}/>
                   </li>
               ))}
-              <li key={'create_button'} className={`${css.list__item} ${css.createButton}`}>
+              <li key={'create_button'}
+                  className={`${css.list__item} ${css.createButton}`}>
                 <CreateBoardButton/>
               </li>
 
-              <li key={'create_button_mobile'}>
-                <CreateBoardButtonMobile/>
-              </li>
+              <CreateBoardButtonMobile/>
             </>
           </ul>
         </div>

@@ -1,43 +1,65 @@
 @import "../../../variables/variables.color";
 
-.container {
+.button {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 60px;
+  height: 60px;
   display: block;
-  width: 100%;
-  background-color: rgba(9,30,66,.04);
-  border-radius: 5px;
+  background-color: $bg-fill-green;
+  border-radius: 50%;
   border: none;
   outline: none;
-  cursor: pointer;
   padding: 0;
   margin: 0;
+  background-repeat: no-repeat;
+  background-size: 200% 100%, auto;
+  background-position: 200% 0, 0 0;
+  box-shadow: rgba(0, 0, 0, .3) 0 2px 5px;
 
-  &:hover {
-    background-color: rgba(9,30,66,.08);
+  &:active {
+    background-color: #fff;
+    transition: .5s linear;
+    background-position: -200% 0, 0 0;
+    box-shadow: none;
   }
 
-  &__inner {
-    position: relative;
+  &__one,
+  &__two {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
     height: 0;
-    border: none;
-    padding-top: 49%;
+    border: 1px solid #fff;
+    transition: all .3s ease-in-out;
+  }
 
-    &__content {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+  &__one {
 
-      & p {
-        color: $color-main-blue;
-        position: absolute;
-        margin: 0 auto;
-        text-align: center;
-        display: block;
-        width: 100%;
-        top: 50%;
-        transform: translateY(-50%);
-      }
+    &__open {
+      composes: button__one;
+      transform: translate(-50%, -50%) rotate(180deg);
     }
+  }
+
+  &__two {
+    transform: translate(-50%, -50%) rotate(90deg);
+
+    &__open {
+      composes: button__two;
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+  }
+
+
+}
+
+//MEDIA TABLE+
+@media screen and (min-width: 768px) {
+  .button {
+    display: none
   }
 }
