@@ -2,6 +2,8 @@
 
 .button {
   position: fixed;
+  overflow: hidden;
+  z-index: 1;
   right: 30px;
   bottom: 30px;
   width: 60px;
@@ -57,9 +59,83 @@
 
 }
 
+.background {
+  position: absolute;
+  top: 51px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 51px);
+  background-color: rgba(255, 255, 255, .6);
+
+  &__close {
+    background-color: transparent;;
+  }
+}
+
+.createButton {
+
+  &__close {
+    composes: button;
+    overflow: visible;
+    width: 36px;
+    height: 36px;
+    right: 24px;
+    color: #ffffff;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all .3s ease-in-out;
+  }
+
+  &__board {
+    composes: createButton__close;
+    bottom: 189px;
+    transform: translate(-50%, -50%) scale(1);
+
+    &:active {
+      transition: all 1s ease-in-out;
+    }
+
+
+    &::after {
+      display: block;
+      color: #000;
+      content: 'Board';
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      padding: 2px 6px;
+      transform: translateY(-50%);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+  }
+
+  &__student {
+    composes: createButton__board;
+    bottom: 138px;
+
+    &::after {
+      content: 'Student';
+    }
+  }
+
+  &__team {
+    composes: createButton__board;
+    bottom: 87px;
+
+    &::after {
+      content: 'Team';
+    }
+  }
+}
+
+
+
 //MEDIA TABLE+
 @media screen and (min-width: 768px) {
   .button {
     display: none
+  }
+
+  .background {
+    display: none;
   }
 }

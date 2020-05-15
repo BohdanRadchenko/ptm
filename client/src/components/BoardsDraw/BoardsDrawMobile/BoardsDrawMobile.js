@@ -9,8 +9,12 @@ const BoardsDrawMobile = ({dateEnd, dateStart, _id, onDelete}) => {
   const start = localDateParse(dateStart)
   const end = localDateParse(dateEnd)
 
+  const handleClick = () => {
+    console.log(`HANDLE CLICK BOARD CARD`, _id)
+  }
+
   return (
-      <div className={css.container}>
+      <div className={css.container} onClick={handleClick}>
         BoardsDrawMobile
       </div>
   )
