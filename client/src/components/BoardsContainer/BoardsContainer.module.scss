@@ -17,10 +17,29 @@
 }
 
 //MEDIA MOBILE
-@media screen and (min-width: 320px) and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .container {
     width: 100%;
     padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    &__menu {
+      display: none;
+    }
+
+    &__list {
+      width: 100%;
+    }
+  }
+}
+
+//MEDIA TABLET
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: 100%;
+    padding: 10px 20px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;

@@ -3,8 +3,8 @@ import {useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {handleDeleteBoard} from '../../redux/boards/boardsOperations'
 import {localDateParse} from '../../helpers/parseDate.helpers'
-import css from './BoardsDraw.module.scss'
 import Icon from "../../Icon/Icon";
+import css from './BoardsDraw.module.scss'
 
 const BoardsDraw = ({dateEnd, dateStart, _id, onDelete}) => {
   const history = useHistory()
@@ -35,7 +35,7 @@ const BoardsDraw = ({dateEnd, dateStart, _id, onDelete}) => {
             <div className={css.content}>
               <div className={css.tileFade}>
 
-                {/*HOVER BUTTON*/}
+                {/*HOVER BUTTON CONTROL*/}
                 <div className={css.control}>
                   <div className={css.control__left}>
                     <button className={css.button}
