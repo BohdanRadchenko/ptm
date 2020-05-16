@@ -11,7 +11,6 @@ const CreateBoardButtonMobile = ({createModalBoardsOpen}) => {
   }
 
   const handleButtonCreateBoardClick = () => {
-    console.log('BUTTON CLICK CREATE BOARD')
     createModalBoardsOpen()
     setIsOpen(false)
   }

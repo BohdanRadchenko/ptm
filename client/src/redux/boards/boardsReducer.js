@@ -18,7 +18,7 @@ const boardsReducer = (state = [], { type, payload }) => {
 
 const loadingReducer = (state = false, { type, payload }) => {
   switch (type) {
-    // case ActionTypes.BOARDS_REQUEST:
+    case ActionTypes.BOARDS_REQUEST:
     case ActionTypes.BOARD_CREATE_REQUEST:
     case ActionTypes.BOARD_DELETE_REQUEST:
       return true;

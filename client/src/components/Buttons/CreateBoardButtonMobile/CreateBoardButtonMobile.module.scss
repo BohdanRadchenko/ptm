@@ -1,138 +1,192 @@
 @import "../../../variables/variables.color";
 
-.button {
-  position: fixed;
-  overflow: hidden;
-  z-index: 1;
-  right: 30px;
-  bottom: 30px;
-  width: 60px;
-  height: 60px;
-  display: block;
-  background-color: $bg-fill-green;
-  border-radius: 50%;
-  border: none;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  background-repeat: no-repeat;
-  background-size: 200% 100%, auto;
-  background-position: 200% 0, 0 0;
-  //box-shadow: rgba(0, 0, 0, .3) 0 2px 5px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
-
-  &:active {
-    background-color: #fff;
-    transition: .5s linear;
-    background-position: -200% 0, 0 0;
-    box-shadow: none;
-    transform: translateY(10px);
-  }
-
-  &__one,
-  &__two {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30%;
-    height: 0;
-    border: 1px solid #fff;
-    transition: all .3s ease-in-out;
-  }
-
-  &__one {
-
-    &__open {
-      composes: button__one;
-      transform: translate(-50%, -50%) rotate(180deg);
-    }
-  }
-
-  &__two {
-    transform: translate(-50%, -50%) rotate(90deg);
-
-    &__open {
-      composes: button__two;
-      transform: translate(-50%, -50%) rotate(180deg);
-    }
-  }
-
-
-}
-
-.background {
-  position: absolute;
-  top: 51px;
-  left: 0;
-  width: 100%;
-  height: calc(100% - 51px);
-  background-color: rgba(255, 255, 255, .6);
-
-  &__close {
-    background-color: transparent;;
-  }
-}
-
-.createButton {
-
-  &__close {
-    composes: button;
-    overflow: visible;
-    width: 36px;
-    height: 36px;
-    right: 24px;
-    color: #ffffff;
-    transform: translate(-50%, -50%) scale(0);
-    transition: all .3s ease-in-out;
-  }
-
-  &__board {
-    composes: createButton__close;
-    bottom: 189px;
-    transform: translate(-50%, -50%) scale(1);
+//MEDIA MOBILE
+  .button {
+    position: fixed;
+    overflow: hidden;
+    z-index: 1;
+    right: 30px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    display: block;
+    background-color: $bg-fill-green;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: 200% 100%, auto;
+    background-position: 200% 0, 0 0;
+    //box-shadow: rgba(0, 0, 0, .3) 0 2px 5px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
     &:active {
-      transition: all 1s ease-in-out;
+      background-color: #fff;
+      transition: .5s linear;
+      background-position: -200% 0, 0 0;
+      box-shadow: none;
+      transform: translateY(10px);
     }
 
-    &::after {
-      display: block;
-      color: #000;
-      content: 'Board';
+    &__one,
+    &__two {
       position: absolute;
-      right: 60px;
       top: 50%;
-      padding: 2px 6px;
-      transform: translateY(-50%);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30%;
+      height: 0;
+      border: 1px solid #fff;
+      transition: all .3s ease-in-out;
+    }
+
+    &__one {
+
+      &__open {
+        composes: button__one;
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+    }
+
+    &__two {
+      transform: translate(-50%, -50%) rotate(90deg);
+
+      &__open {
+        composes: button__two;
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+    }
+
+
+  }
+
+  .background {
+    position: absolute;
+    top: 51px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 51px);
+    background-color: rgba(255, 255, 255, .6);
+
+    &__close {
+      background-color: transparent;;
     }
   }
 
-  &__student {
-    composes: createButton__board;
-    bottom: 138px;
+  .createButton {
 
-    &::after {
-      content: 'Student';
+    &__close {
+      composes: button;
+      overflow: visible;
+      width: 36px;
+      height: 36px;
+      right: 24px;
+      color: #ffffff;
+      transform: translate(-50%, -50%) scale(0);
+      transition: all .3s ease-in-out;
+      backface-visibility: hidden;
+    }
+
+    &__board {
+      composes: createButton__close;
+      bottom: 189px;
+      transform: translate(-50%, -50%) scale(1);
+
+      &:active {
+        transition: all 1s ease-in-out;
+      }
+
+      &::after {
+        background-color: rgba(255, 255, 255, 1);
+        font-size: 18px;
+        font-weight: 600;
+        display: block;
+        color: #000;
+        content: 'Board';
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        padding: 2px 6px;
+        transform: translateY(-50%);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      }
+    }
+
+    &__student {
+      composes: createButton__board;
+      bottom: 138px;
+
+      &::after {
+        content: 'Student';
+      }
+    }
+
+    &__team {
+      composes: createButton__board;
+      bottom: 87px;
+
+      &::after {
+        content: 'Team';
+      }
     }
   }
 
-  &__team {
-    composes: createButton__board;
-    bottom: 87px;
+//MEDIA MOBILE L
+@media screen and (min-width: 740px) and (max-width: 767px) {
+  .button {
+    bottom: 10px; //30
+  }
 
-    &::after {
-      content: 'Team';
+  .createButton {
+
+    &__board {
+      bottom: 166px; //189
+
+      &::after {
+        top: 50%;
+      }
+    }
+
+    &__student {
+      bottom: 116px; // 138
+    }
+
+    &__team {
+      bottom: 64px; //87
     }
   }
 }
 
+//MEDIA TABLE
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .background {
+    background-color: transparent;
+  }
 
+  .button {
+    bottom: 30px;
+  }
 
-//MEDIA TABLE+
-@media screen and (min-width: 768px) {
+  .createButton {
+
+    &__board {
+      bottom: 189px;
+    }
+
+    &__student {
+      bottom: 138px;
+    }
+
+    &__team {
+      bottom: 87px;
+    }
+  }
+}
+
+//MEDIA DESKTOP +
+@media screen and (min-width: 1024px) {
   .button {
     display: none
   }
