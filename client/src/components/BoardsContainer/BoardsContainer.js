@@ -37,7 +37,7 @@ const BoardsContainer = ({handleBoards, boards, isOpenModalBoards, handleCloseBo
   return (
       <>
         {/*LOADING*/}
-        {loading && <LoadersScreen/>}
+        {/*{loading && <LoadersScreen/>}*/}
 
         <div className={css.container}>
           <div className={css.container__menu}>
