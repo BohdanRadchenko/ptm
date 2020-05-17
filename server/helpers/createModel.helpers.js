@@ -4,13 +4,13 @@ const shortId = require('shortid')
 const mongoose = require('mongoose')
 
 const weekOptions = [
-  {value: 0, label: 'Mon'},
-  {value: 1, label: 'Tue'},
-  {value: 2, label: 'Wed'},
-  {value: 3, label: 'Thu'},
-  {value: 4, label: 'Fri'},
-  {value: 5, label: 'Sat'},
-  {value: 6, label: 'Sun'},
+  {value: 0, label: 'Monday', short : 'Mon'},
+  {value: 1, label: 'Tuesday', short : 'Tue'},
+  {value: 2, label: 'Wednesday', short : 'Wed'},
+  {value: 3, label: 'Thursday', short : 'Thu'},
+  {value: 4, label: 'Friday', short : 'Fri'},
+  {value: 5, label: 'Saturday', short : 'Sat'},
+  {value: 6, label: 'Sunday', short : 'Sun'},
 ];
 
 //mongoose.Types.ObjectId("5c17505032389130da703ab0")
@@ -56,9 +56,32 @@ const createLists = (week) => {
   week.map(el => {
     const list = {
       id: `list-${el.id}`,
-      title: weekOptions.find(opt => opt.value === el.id).label,
+      label: weekOptions.find(opt => opt.value === el.id).label,
       date: el.day,
-      cards: [],
+      cards: [      {
+        id: `cards-${el.id}0`,
+        title: "cards 0",
+        hour: '12',
+        min: '00'
+      },
+        {
+          id: `cards-${el.id}1`,
+          title: "cards 1",
+          hour: '12',
+          min: '00'
+        },
+        {
+          id: `cards-${el.id}2`,
+          title: "cards 2",
+          hour: '12',
+          min: '00'
+        },
+        {
+          id: `cards-${el.id}3`,
+          title: "cards 3",
+          hour: '12',
+          min: '00'
+        }],
     }
     lists.push(list)
   })

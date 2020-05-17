@@ -4,12 +4,16 @@ axios.defaults.baseURL = '/api/v1';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 const API_PATH = {
+  //AUTH
   SIGN_UP: '/auth/register',
   SIGN_IN: '/auth/login',
   LOG_OUT: '/auth/logout',
+  //BOARD
   BOARD_CREATE: '/boards/create',
   BOARD_GET_ALL: '/boards',
   BOARD_DELETE: '/boards/',
+  //LIST
+  LIST_GET_ALL: '/lists/',
 }
 
 export const setAuthToken = token => {
@@ -20,6 +24,7 @@ export const clearAuthToken = () => {
   axios.defaults.headers.common.Authorization = null;
 };
 
+//API AUTH
 export const auth = () => {
   const signUp = async credentials => await axios.post(
       API_PATH.SIGN_UP, credentials)
@@ -32,7 +37,7 @@ export const auth = () => {
   return {signUp, signIn, logOut}
 }
 
-
+//API BOARDS
 export const boards = () => {
   const create = async credentials => {
     return await axios.post(API_PATH.BOARD_CREATE, credentials)
@@ -47,5 +52,14 @@ export const boards = () => {
   }
 
   return {create, all, remove}
+}
+
+//API LISTS
+export const lists = () => {
+  const all = async (id) => {
+    return await axios.get(API_PATH.LIST_GET_ALL + id)
+  }
+
+  return {all}
 }
 

@@ -20,27 +20,28 @@ const lists = (state = [], {type, payload}) => {
 
       // in the same list
       if (droppableIdStart === droppableIdEnd) {
-        const list = state.find(el => el.id === droppableIdStart);
+        const list = state.list.lists.find(el => el.id ===
+        droppableIdStart);
         const card = list.cards.splice(droppableIndexStart, 1);
         list.cards.splice(droppableIndexEnd, 0, ...card);
-        const newState = state.map(el => {
-          if (el.id === droppableIdStart) {
-            return list
-          }
-          return el
-        })
-        return newState;
+      //   const newState = state.list.lists.map(el => {
+      //     if (el.id === droppableIdStart) {
+      //       return list
+      //     }
+      //     return el
+      //   })
+      //   return newState;
+        return state
       }
 
       // other list
       if (droppableIdStart !== droppableIdEnd) {
-        const listStart = state.find(
+        const listStart = state.list.lists.find(
             el => el.id === droppableIdStart);
         const card = listStart.cards.splice(droppableIndexStart, 1);
-        const listEnd = state.find(el => el.id === droppableIdEnd);
+        const listEnd = state.list.lists.find(el => el.id === droppableIdEnd);
         listEnd.cards.splice(droppableIndexEnd, 0, ...card);
-        // const newState = state.map(el => {
-        state.map(el => {
+        state.list.lists.map(el => {
           if (el.id === droppableIdStart) {
             return listStart
           }

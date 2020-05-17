@@ -5,7 +5,7 @@ const auth = require('../middleware/auth.middleware')
 const CreateModel = require('../helpers/createModel.helpers')
 const router = Router()
 
-// /api/v1/boards/create  POST
+// /api/v1/boards/create  POST create new board
 router.post('/create', auth, async (req, res) => {
   try {
     const userId = req.user.decoded.userId
@@ -31,6 +31,7 @@ router.post('/create', auth, async (req, res) => {
         if(err) return new Error(err)
         await Board.find().exec((err, boards) => {
           if(err) return new Error(err)
+          console.log('New board is created')
         return res.status(201).json({message: `New board is created`, boards})
         })
       })
@@ -41,17 +42,15 @@ router.post('/create', auth, async (req, res) => {
   }
 })
 
-let count = 0
-
-// /api/v1/boards/  GET
+// /api/v1/boards/  GET a list of all boards
 router.get('/', auth, async (req, res) => {
   try {
-    count++
-    console.log('GET BOARD', count)
+    console.log('GET BOARD')
     const userId = req.user.decoded.userId
     await Board.find().exec(async (err, boards) => {
       if(err) return new Error(err)
       const accessBoards = boards.filter(el => el.access.includes(userId))
+      console.log('GET boards Success')
       return res.status(200).json({message: `GET boards Success`, boards : accessBoards})
     })
   } catch (e) {
@@ -60,14 +59,19 @@ router.get('/', auth, async (req, res) => {
   }
 })
 
-// /api/v1/boards/  DELETE
+// /api/v1/boards/  DELETE board and list with  BOARD:ID
 router.delete('/:id', auth, async (req, res) => {
   try {
     const id = req.params.id
     await Board.findByIdAndDelete(id).exec(async (err, board) => {
       if(err) return new Error(err)
+      await List.findByIdAndDelete(board.list).exec((err, list) => {
+        if(err) return new Error(err)
+        return null
+      })
       const boards = await Board.find()
-      return res.status(200).json({message: `GET boards Success`, boards})
+      console.log('DELETE boards Success')
+      return res.status(200).json({message: `DELETE boards Success`, boards})
     })
   } catch (e) {
     res.status(500)

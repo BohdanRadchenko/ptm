@@ -1,0 +1,42 @@
+@import "../../variables/variables.color";
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  height: 30px;
+  margin: 0 auto 4px auto;
+  background-color: $bg-main-fill;
+}
+
+.main {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+
+  &__left {
+    overflow: inherit;
+    width: 0;
+  }
+
+  &__right {
+    width: 100%;
+  }
+}
+
+.list {
+  list-style: none;
+  width: 99%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+
+  &__item {
+    width: 14%;
+  }
+}

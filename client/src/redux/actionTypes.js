@@ -1,4 +1,5 @@
 export const ActionTypes = {
+
   //AUTH HANDLER
   HANDLE_AUTH_IN: 'HANDLE_AUTH_IN',
   HANDLE_AUTH_OUT: 'HANDLE_AUTH_OUT',

@@ -3,7 +3,12 @@ $bg-main-blue: #026aa7;
 $bg-secondary-blue: #01509f;
 $bg-main-gray: #f4f5f7;
 
-$bg-main-fill: #0079bf;
+$bg-main-fill: rgb(0, 121, 191);
+
+$bg-gradient-main : rgba(0, 121, 191, 1);
+$bg-gradient-secondary : rgba(0, 121, 191, .8);
+$bg-gradient-tertiary : rgba(0, 121, 191, .6);
+$bg-gradient-quaternary : rgba(0, 121, 191, .4);
 
 //$bg-fill-green: #5aac44;
 //$bg-fill-green: #00ff00;

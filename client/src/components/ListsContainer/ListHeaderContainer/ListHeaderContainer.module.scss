@@ -1,0 +1,35 @@
+.board {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  &__date {
+    display: flex;
+
+    &__inner {
+      display: flex;
+
+      &:first-child::after {
+        content: '-';
+        margin: 0 4px;
+      }
+
+      & p::after {
+        content: '.';
+      }
+
+      & p:last-child::after {
+        content: '';
+      }
+    }
+  }
+
+  &__start {
+    display: flex;
+  }
+
+  &__access {
+    display: flex;
+  }
+}

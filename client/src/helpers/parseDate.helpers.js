@@ -1,4 +1,5 @@
 export const localDateParse = (date) => {
+  if(!date) return null
   const day = new Date(date).getDate()
   const month = new Date(date).getMonth()
   return {
