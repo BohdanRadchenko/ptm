@@ -46,6 +46,14 @@ export const ActionTypes = {
   // -----------------------------------------------------------------
 
 
+  // ---- USER ACTION-----------------------------------------------
+  //USER GET
+  USER_REQUEST: 'USER_REQUEST',
+  USER_SUCCESS: 'USER_SUCCESS',
+  USER_ERROR: 'USER_ERROR',
+  // -----------------------------------------------------------------
+
+
   // ---- BOARDS ACTION-----------------------------------------------
   //BOARDS GET ALL
   BOARDS_REQUEST: 'BOARDS_REQUEST',

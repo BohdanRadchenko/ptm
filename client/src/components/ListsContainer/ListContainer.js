@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {listsHandler} from '../../redux/lists/listsOperations'
+import {handleDeleteBoard} from '../../redux/boards/boardsOperations'
 import {getBoards, getLists} from '../../redux/lists/listsSelectors'
 import * as listsActions from '../../redux/lists/listsActions'
 import {DragDropContext} from 'react-beautiful-dnd'
@@ -11,7 +12,7 @@ import ListHeaderContainer
 import css from './ListContainer.module.scss'
 
 
-const ListContainer = ({lists, board, handleDrag, handlerLists}) => {
+const ListContainer = ({lists, board, handleDrag, handlerLists, handleDeleteBoard}) => {
   const history = useHistory()
   const boardId = history.location.pathname.split('/')[2]
 
@@ -40,7 +41,7 @@ const ListContainer = ({lists, board, handleDrag, handlerLists}) => {
         {/*HEADER*/}
         <div className={css.header}>
           {board && (
-              <ListHeaderContainer {...board}/>
+              <ListHeaderContainer {...board} onDelete={handleDeleteBoard}/>
           )}
         </div>
 
@@ -79,6 +80,7 @@ const mSTP = state => (
 const mDTP = {
   handlerLists: listsHandler,
   handleDrag: listsActions.handleDrag,
+  handleDeleteBoard: handleDeleteBoard,
   // handlePatchList: listsOperations.handlePatchList
 
 }
