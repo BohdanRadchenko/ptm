@@ -16,6 +16,7 @@ import DeveloperBoardOutlinedIcon
 import StarBorderOutlinedIcon
   from '@material-ui/icons/StarBorderOutlined';
 import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
+import KeyboardCapslockOutlinedIcon from '@material-ui/icons/KeyboardCapslockOutlined';
 // STYLE IMPORT
 import css from './Icon.module.scss'
 
@@ -153,6 +154,18 @@ const Icon = () => {
     )
   }
 
+  const CapsIcon = () => {
+    return (
+        // <div className={css.container}>
+        //   <div className={css.icon}>
+        //     <div className={css.icon__content}>
+              <KeyboardCapslockOutlinedIcon style={{fontSize : '1rem'}} className={css.pos}/>
+            // </div>
+          // </div>
+        // </div>
+    )
+  }
+
   return {
     HomeIcon,
     AppIcon,
@@ -164,7 +177,8 @@ const Icon = () => {
     TeamIcon,
     BoardIcon,
     StarIcon,
-    DeleteIcon
+    DeleteIcon,
+    CapsIcon
   }
 
 }

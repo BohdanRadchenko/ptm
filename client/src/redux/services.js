@@ -13,7 +13,12 @@ const API_PATH = {
   BOARD_GET_ALL: '/boards',
   BOARD_DELETE: '/boards/',
   //LIST
-  LIST_GET_ALL: '/lists/',
+  LIST: '/lists',
+  LIST_ACCESS: '/lists/access',
+  //USERS
+  USERS: '/users',
+  USERS_ID: '/users/',
+  USERS_ACCESS: '/users/access',
 }
 
 export const setAuthToken = token => {
@@ -57,9 +62,33 @@ export const boards = () => {
 //API LISTS
 export const lists = () => {
   const all = async (id) => {
-    return await axios.get(API_PATH.LIST_GET_ALL + id)
+    return await axios.get(API_PATH.LIST + '/' + id)
   }
 
-  return {all}
+  const patch = async (credential) => {
+    return await axios.patch(API_PATH.LIST, credential)
+  }
+
+  const access = async (credential) => {
+    return await axios.post(API_PATH.LIST_ACCESS, credential)
+  }
+
+  return {all, access, patch}
+}
+
+//API USERS
+export const users = () => {
+  const user = async (id) => {
+    return await axios.get(API_PATH.USERS_ID + id)
+  }
+
+  const users = async () => {
+    return await axios.get(API_PATH.USERS)
+  }
+
+  const access = async (credentials) => {
+    return await axios.post(API_PATH.USERS_ACCESS, credentials)
+  }
+  return {user, access, users}
 }
 

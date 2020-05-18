@@ -10,10 +10,12 @@ $bg-gradient-secondary : rgba(0, 121, 191, .8);
 $bg-gradient-tertiary : rgba(0, 121, 191, .6);
 $bg-gradient-quaternary : rgba(0, 121, 191, .4);
 
-//$bg-fill-green: #5aac44;
-//$bg-fill-green: #00ff00;
-//$bg-fill-green: #21d100;
+//DISABLED
+$bg-disabled : rgba(9,30,66,.04);
+$color-disabled : #a5adba;
+
 $bg-fill-green: hsl(105, 70%, 41%);;
+$bg-fill-green-secondary: #5aac44;
 
 $bg-secondary-fill: hsla(0,0%,100%,.3);
 $bg-secondary-fill-hover: hsla(0,0%,100%,.2);

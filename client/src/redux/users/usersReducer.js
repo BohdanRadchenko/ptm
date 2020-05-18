@@ -1,14 +1,21 @@
 import { combineReducers } from 'redux';
 import { ActionTypes } from '../actionTypes';
 
-const boardsReducer = (state = [], { type, payload }) => {
+const accessUsersReducer = (state = [], { type, payload }) => {
   switch (type) {
-    case ActionTypes.BOARDS_SUCCESS:
-    case ActionTypes.DELETE_BOARD_SUCCESS:
+    case ActionTypes.USERS_ACCESS_REQUEST:
+    case ActionTypes.USERS_ACCESS_SUCCESS:
       return payload
 
-    case ActionTypes.LOGOUT_SUCCESS:
-      return {};
+    default:
+      return state;
+  }
+};
+
+const usersReducer = (state = [], { type, payload }) => {
+  switch (type) {
+    case ActionTypes.USERS_SUCCESS:
+      return payload
 
     default:
       return state;
@@ -18,14 +25,9 @@ const boardsReducer = (state = [], { type, payload }) => {
 const error = (state = null, { type, payload }) => {
   switch (type) {
     case ActionTypes.SIGN_UP_ERROR:
-    case ActionTypes.SIGN_IN_ERROR:
-    case ActionTypes.REFRESH_USER_ERROR:
       return payload.error;
 
-    case ActionTypes.SIGN_IN_SUCCESS:
     case ActionTypes.SIGN_UP_SUCCESS:
-    case ActionTypes.REFRESH_USER_SUCCESS:
-    case ActionTypes.CLEAR_ERROR_MESSAGE:
       return null;
 
     default:
@@ -35,6 +37,7 @@ const error = (state = null, { type, payload }) => {
 
 
 export default combineReducers({
-  boards : boardsReducer,
+  access : accessUsersReducer,
+  users : usersReducer,
   error,
 });

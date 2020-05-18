@@ -1,19 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useHistory} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {handleAccessUsers} from '../../../redux/users/usersOperations'
+import {getAccessUsers} from '../../../redux/users/usersSelectors'
 import {localDateParse} from "../../../helpers/parseDate.helpers";
 import Icon from "../../../Icon/Icon";
 import ListHeaderAccess from "./ListHeaderAccess/ListHeaderAccess";
 import css from './ListHeaderContainer.module.scss'
 
-//access: ["5ebc4015f51a0842b8cfaeb0"]
-// author: "5ebc4015f51a0842b8cfaeb0"
-// _id: "5ec07d829a8f0306cc3e11e8"
-
-const ListHeaderContainer = ({access, author, _id, dateEnd, dateStart, onDelete}) => {
+const ListHeaderContainer = ({access, author, _id, dateEnd, dateStart, onDelete, handleAccessUsers, accessUsers}) => {
   const history = useHistory()
   const start = localDateParse(dateStart)
   const end = localDateParse(dateEnd)
   const {StarIcon, DeleteIcon} = Icon()
+
+  useEffect(() => {
+    handleAccessUsers(access)
+  }, [access, handleAccessUsers])
 
   const handleBoardDelete = () => {
     onDelete(_id)
@@ -83,11 +86,26 @@ const ListHeaderContainer = ({access, author, _id, dateEnd, dateStart, onDelete}
 
         {/*HEDER BOARD ACCESS*/}
         <div className={css.board__access}>
-          <ListHeaderAccess access={access} author={author}/>
+          {!!accessUsers.length && (
+              <ListHeaderAccess
+                  access={access}
+                  users={accessUsers}
+                  authorId={author}/>
+          )}
         </div>
 
       </div>
   )
 }
 
-export default ListHeaderContainer
+const mSTP = state => (
+    {
+      accessUsers: getAccessUsers(state)
+    }
+)
+
+const mDTP = {
+  handleAccessUsers: handleAccessUsers
+}
+
+export default connect(mSTP, mDTP)(ListHeaderContainer)

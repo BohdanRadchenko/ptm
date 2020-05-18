@@ -1,11 +1,11 @@
 import * as api from '../services'
 import {
+  boardCreateError,
+  boardCreateRequest,
+  boardCreateSuccess,
   boardsError,
   boardsRequest,
   boardsSuccess,
-    boardCreateRequest,
-    boardCreateSuccess,
-    boardCreateError,
   deleteBoardError,
   deleteBoardRequest,
   deleteBoardSuccess

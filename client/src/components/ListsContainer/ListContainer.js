@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {listsHandler} from '../../redux/lists/listsOperations'
+import {listsHandler, listsPatchHandler} from '../../redux/lists/listsOperations'
 import {handleDeleteBoard} from '../../redux/boards/boardsOperations'
 import {getBoards, getLists} from '../../redux/lists/listsSelectors'
 import * as listsActions from '../../redux/lists/listsActions'
@@ -12,7 +12,7 @@ import ListHeaderContainer
 import css from './ListContainer.module.scss'
 
 
-const ListContainer = ({lists, board, handleDrag, handlerLists, handleDeleteBoard}) => {
+const ListContainer = ({lists, board, handleDrag, handlerLists, handleDeleteBoard, handlePatchList}) => {
   const history = useHistory()
   const boardId = history.location.pathname.split('/')[2]
 
@@ -32,7 +32,7 @@ const ListContainer = ({lists, board, handleDrag, handlerLists, handleDeleteBoar
         draggableId,
         type
     )
-    // handlePatchList(boardId, lists)
+    handlePatchList({boardId, lists})
   }
 
   return (
@@ -79,9 +79,9 @@ const mSTP = state => (
 
 const mDTP = {
   handlerLists: listsHandler,
+  handlePatchList: listsPatchHandler,
   handleDrag: listsActions.handleDrag,
   handleDeleteBoard: handleDeleteBoard,
-  // handlePatchList: listsOperations.handlePatchList
 
 }
 

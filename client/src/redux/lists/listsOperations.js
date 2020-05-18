@@ -6,6 +6,9 @@ import {
   listPatchError,
   listPatchRequest,
   listPatchSuccess,
+    listAccessRequest,
+    listAccessSuccess,
+    listAccessError,
   listsError,
   listsRequest,
   listsSuccess
@@ -22,22 +25,22 @@ export const listsHandler = boardId => dispatch => {
       });
 };
 
-// export const handlePatchList = (id, lists) => dispatch => {
-//   dispatch(listPatchRequest());
-//   return axios
-//       .patch(`/boards/patch/${id}`, {lists})
-//       .then(response => {
-//         return dispatch(listPatchSuccess(response.data.board.lists));
-//       })
-//       .catch(error => dispatch(listPatchError(error)));
-// };
+export const listsPatchHandler = credential => dispatch => {
+  dispatch(listPatchRequest());
+  return api.lists().patch(credential)
+      .then(response => {
+        return dispatch(listPatchSuccess(response.data.data));
+      })
+      .catch(error => {
+        return dispatch(listPatchError(error))
+      });
+};
 
-// export const handleCreateCards = (id, card) => dispatch => {
-//   dispatch(createCardRequest());
-//   return axios
-//       .post(`/cards/create`, {id, card})
-//       .then(response => {
-//         return dispatch(createCardSuccess(response.data.board.lists));
-//       })
-//       .catch(error => dispatch(createCardError(error)));
-// };
+export const handleListAccess = credentials => dispatch => {
+  dispatch(listAccessRequest());
+  return api.lists().access(credentials)
+      .then(response => {
+        return dispatch(listAccessSuccess(response.data.data));
+      })
+      .catch(error => dispatch(listAccessError(error)));
+};

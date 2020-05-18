@@ -4,6 +4,7 @@ import {ActionTypes} from '../actionTypes';
 const lists = (state = [], {type, payload}) => {
   switch (type) {
     case ActionTypes.LISTS_SUCCESS:
+    case ActionTypes.LIST_ACCESS_SUCCESS:
     case ActionTypes.LIST_PATCH_SUCCESS:
     case ActionTypes.CREATE_CARDS_SUCCESS:
       return payload

@@ -16,6 +16,23 @@ export const listsError = error => ({
 });
 
 
+//BOARDS ACCESS
+export const listAccessRequest = () => ({
+  type: ActionTypes.LIST_ACCESS_REQUEST,
+  payload: [],
+});
+
+export const listAccessSuccess = response => ({
+  type: ActionTypes.LIST_ACCESS_SUCCESS,
+  payload: response,
+});
+
+export const listAccessError = error => ({
+  type: ActionTypes.LIST_ACCESS_ERROR,
+  payload: { error },
+});
+
+
 //LIST PATCH
 export const listPatchRequest = () => ({
   type: ActionTypes.LISTS_REQUEST,
